@@ -1,9 +1,11 @@
-import React from 'react'
 import Products from '../pages/Products/Products'
+import CreateProducts from '../pages/CreateProducts/CreateProducts'
+
 const App = () => {
   return (
     <div>
       <Products />
+      <CreateProducts />
     </div>
   )
 }
