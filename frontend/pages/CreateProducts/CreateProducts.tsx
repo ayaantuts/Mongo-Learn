@@ -29,23 +29,23 @@ const CreateProducts = () => {
         <div>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label htmlFor="name">Name</label>
+                    <label htmlFor="name">Name: </label>
                     <input type="text" id="name" name="name" />
                 </div>
                 <div>
-                    <label htmlFor="price">Price</label>
+                    <label htmlFor="price">Price: </label>
                     <input type="number" id="price" name="price" />
                 </div>
                 <div>
-                    <label htmlFor="quantity">Quantity</label>
+                    <label htmlFor="quantity">Quantity: </label>
                     <input type="number" id="quantity" name="quantity" />
                 </div>
                 <div>
-                    <label htmlFor="description">Description</label>
+                    <label htmlFor="description">Description: </label>
                     <input type="text" id="description" name="description" />
                 </div>
                 <div>
-                    <label htmlFor="image">Image</label>
+                    <label htmlFor="image">Image: </label>
                     <input type="text" id="image" name="image" />
                 </div>
                 <button type="submit">Create Product</button>
