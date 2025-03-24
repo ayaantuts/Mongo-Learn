@@ -1,7 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const cors = require('cors');
 const app = express();
 const port = process.env.PORT || 3000;
 const productRoutes = require('./routes/products.routes');
@@ -11,7 +10,6 @@ app.get('/', (req, res) => {
 	res.send('Hello World!');
 });
 
-app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -21,7 +19,7 @@ mongoose.connect(process.env.MONGO_URI)
 		app.listen(port, () => {
 			console.log(`Server is running on port http://localhost:${port}/`);
 		});
-		app.use('/api/products', productRoutes);
+		app.use('/api/v1/products', productRoutes);
 	})
 	.catch((error) => {
 		console.error('Error connecting to MongoDB', error);
