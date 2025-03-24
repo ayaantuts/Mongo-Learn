@@ -9,7 +9,7 @@ const CreateProducts = () => {
         const description = (e.currentTarget.elements.namedItem('description') as HTMLInputElement).value;
         const image = (e.currentTarget.elements.namedItem('image') as HTMLInputElement).value;
 
-        const resp = await fetch('http://localhost:3000/api/products/', {
+        const resp = await fetch('/api/v1/products/', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
