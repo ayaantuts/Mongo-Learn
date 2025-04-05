@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Product = require('../models/product.model');
-const { getProducts } = require('../controllers/product.controller');
+const { getProducts, postProducts } = require('../controllers/product.controller');
 
 router.get('/', getProducts);
 
@@ -19,14 +19,7 @@ router.get('/:id', async (req, res) => {
 	}
 });
 
-router.post('/', async (req, res) => {
-	try {
-		const product = await Product.create(req.body);
-		res.status(200).json({ message: 'Successfully saved!', data: product });
-	} catch (error) {
-		res.status(500).json({ message: error.message });
-	};
-});
+router.post('/', postProducts);
 
 router.put('/:id', async (req, res) => {
 	try {
