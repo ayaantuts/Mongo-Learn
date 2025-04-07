@@ -6,13 +6,13 @@ import { useParams } from "react-router-dom";
 
 const FormFill = ({ isNew = false }: { isNew: boolean }) => {
 	const params = useParams();
+	const _id:(string|undefined) = params.id; 
 	const [name, setName] = useState("");
 	const [price, setPrice] = useState(0);
 	const [quantity, setQuantity] = useState(0);
 	const [description, setDescription] = useState("");
 	useEffect(() => {
 		if (!isNew) {
-			const _id = params.id;
 			axios
 				.get(`/api/v1/products/${_id}`)
 				.then((req) => {
@@ -50,7 +50,7 @@ const FormFill = ({ isNew = false }: { isNew: boolean }) => {
 				});
 		else
 			axios
-				.put("/api/v1/products/", {
+				.put(`/api/v1/products/${_id}`, {
 					name,
 					description,
 					price,
