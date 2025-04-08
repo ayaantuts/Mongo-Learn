@@ -11,13 +11,19 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const ProductCard = (product: Product) => {
-	const formatDate = (dateString: string) => {
+const ProductCard = ({
+	createdAt,
+	description,
+	name,
+	price,
+	quantity,
+	updatedAt,
+	_id,
+}: Product) => {
+	const formatDate = (dateString: string): string => {
 		const date = new Date(dateString);
 		return `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
 	};
-	const { createdAt, description, name, price, quantity, updatedAt, _id } =
-		product;
 
 	const navigate = useNavigate();
 	const handleEditClick = () => {

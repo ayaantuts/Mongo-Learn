@@ -3,10 +3,12 @@ import { FormEvent, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import Product from "../../types/Product";
 import { useParams } from "react-router-dom";
+import { Button, TextField } from "@mui/material";
+import { Edit } from "@mui/icons-material";
 
 const FormFill = ({ isNew = false }: { isNew: boolean }) => {
 	const params = useParams();
-	const _id:(string|undefined) = params.id; 
+	const _id: string | undefined = params.id;
 	const [name, setName] = useState("");
 	const [price, setPrice] = useState(0);
 	const [quantity, setQuantity] = useState(0);
@@ -69,8 +71,12 @@ const FormFill = ({ isNew = false }: { isNew: boolean }) => {
 		<div>
 			<form onSubmit={handleSubmit}>
 				<div>
-					<label htmlFor="name">Name: </label>
-					<input
+					<TextField
+						required
+						margin="dense"
+						placeholder="Name"
+						label="Name"
+						fullWidth
 						type="text"
 						id="name"
 						name="name"
@@ -78,11 +84,15 @@ const FormFill = ({ isNew = false }: { isNew: boolean }) => {
 						onInput={(e: FormEvent<HTMLInputElement>) =>
 							setName((e.target as HTMLInputElement).value)
 						}
-						/>
+					/>
 				</div>
 				<div>
-					<label htmlFor="price">Price: </label>
-					<input
+					<TextField
+						required
+						margin="dense"
+						placeholder="Price"
+						label="Price"
+						fullWidth
 						type="number"
 						id="price"
 						name="price"
@@ -92,11 +102,15 @@ const FormFill = ({ isNew = false }: { isNew: boolean }) => {
 								parseInt((e.target as HTMLInputElement).value)
 							)
 						}
-						/>
+					/>
 				</div>
 				<div>
-					<label htmlFor="quantity">Quantity: </label>
-					<input
+					<TextField
+						required
+						margin="dense"
+						placeholder="Quantity"
+						label="Quantity"
+						fullWidth
 						type="number"
 						id="quantity"
 						name="quantity"
@@ -109,18 +123,26 @@ const FormFill = ({ isNew = false }: { isNew: boolean }) => {
 						/>
 				</div>
 				<div>
-					<label htmlFor="description">Description: </label>
-					<input
+					<TextField
+						required
+						margin="dense"
+						placeholder="Description"
+						label="Description"
+						fullWidth
 						type="text"
 						id="description"
 						name="description"
 						value={description}
+						multiline
+						rows={10}
 						onInput={(e: FormEvent<HTMLInputElement>) =>
 							setDescription((e.target as HTMLInputElement).value)
 						}
 					/>
 				</div>
-				<button type="submit">{isNew ? "Create" : "Edit"} Product</button>
+				<Button variant="contained" sx={{ marginY: 4 }} startIcon={<Edit />} type="submit">
+					{isNew ? "Create" : "Edit"} Product
+				</Button>
 			</form>
 		</div>
 	);

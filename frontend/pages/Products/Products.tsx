@@ -3,7 +3,9 @@ import { useEffect, useState } from "react";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import Product from "../../types/Product";
 import { toast } from "react-toastify";
-import { Divider, Stack } from "@mui/material";
+import { Divider, Stack, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
+import { LinkOutlined } from "@mui/icons-material";
 
 const Products = () => {
 	const [products, setProducts] = useState<Product[]>([]);
@@ -35,6 +37,11 @@ const Products = () => {
 					updatedAt={p.updatedAt}
 				/>
 			))}
+			<Link to={"/create"}>
+				<Typography variant="h4">
+					<LinkOutlined /> Create Product
+				</Typography>
+			</Link>
 		</Stack>
 	);
 };
